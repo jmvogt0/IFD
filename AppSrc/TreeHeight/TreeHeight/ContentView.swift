@@ -10,6 +10,9 @@ import RealityKit
 import SwiftUI
 import FocusEntity
 
+var cubePositions :[SIMD3<Float>] = []
+var cubeDistance :Float = 0
+
 struct RealityKitView: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
        let view = ARView()
@@ -17,7 +20,7 @@ struct RealityKitView: UIViewRepresentable {
         // Start AR session
         let session = view.session
         let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal]
+        config.planeDetection = [.horizontal, .vertical]
         session.run(config)
         
         // Add coaching overlay
@@ -58,8 +61,12 @@ struct RealityKitView: UIViewRepresentable {
 
         func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
             guard let view = self.view else { return }
-            debugPrint("Anchors added to the scene: ", anchors)
+            //debugPrint("Anchors added to the scene: ", anchors)
             self.focusEntity = FocusEntity(on: view, style: .classic(color: .yellow))
+        }
+        func calcDistance(cubePositions: [SIMD3<Float>]) -> Float{
+            let distance = distance(cubePositions.first ?? [0,0,0], cubePositions.last ?? [0,0,0])
+            return distance
         }
         
         @objc func handleTap() {
@@ -70,30 +77,27 @@ struct RealityKitView: UIViewRepresentable {
             view.scene.anchors.append(anchor)
 
             // Add a Box entity with a blue material
-            let box = MeshResource.generateBox(size: 0.01, cornerRadius: 0.01)
-            let material = SimpleMaterial(color: .blue, isMetallic: true)
+            let box = MeshResource.generateBox(size: 0.03, cornerRadius: 0.01)
+            let material = SimpleMaterial(color: .yellow, isMetallic: true)
             let diceEntity = ModelEntity(mesh: box, materials: [material])
             diceEntity.position = focusEntity.position
-
+            // Array schreiben um Positionen der Boxen zu speichern
+            cubePositions.append(diceEntity.position)
             anchor.addChild(diceEntity)
-            print (anchor)
+            
+            cubeDistance = calcDistance(cubePositions: cubePositions)
         }
     }
 }
-struct AnchorPoints {
-    let pos1 = "test";
-}
-struct Resolution {
-    var width = 0
-    var height = 0
-}
 
 struct ContentView: View {
+    @State var testvar :Float = cubeDistance
+    @State var count:Int = 1
+    
     var body: some View {
         RealityKitView()
             .ignoresSafeArea()
         
-        let someResolution = Resolution()
         //print(someResolution.width)
         
         
@@ -102,6 +106,13 @@ struct ContentView: View {
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
+                Text("\(testvar)")
+                Button(action: {
+                    self.testvar = cubeDistance
+                }) {
+                    Image(systemName: "plus")
+                }
+                       
             }
             
         }

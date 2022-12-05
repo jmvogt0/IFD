@@ -11,6 +11,10 @@
 		9F2501DE292E618C00F20836 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2501DD292E618C00F20836 /* ContentView.swift */; };
 		9F2501E0292E618D00F20836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F2501DF292E618D00F20836 /* Assets.xcassets */; };
 		9F2501E3292E618D00F20836 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F2501E2292E618D00F20836 /* Preview Assets.xcassets */; };
+		9F6CA4172930E2690024F6AF /* TreeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F6CA4162930E2690024F6AF /* TreeIcon.png */; };
+		9F6CA4192930EBA60024F6AF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6CA4182930EBA60024F6AF /* DetailView.swift */; };
+		9F6CA41B2930F8760024F6AF /* MeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6CA41A2930F8760024F6AF /* MeasureView.swift */; };
+		9FCDDECF293A6E6F009F2E1C /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCDDECE293A6E6F009F2E1C /* test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		9F2501DD292E618C00F20836 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F2501DF292E618D00F20836 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F2501E2292E618D00F20836 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F6CA4162930E2690024F6AF /* TreeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TreeIcon.png; path = ../../../../src/TreeIcon.png; sourceTree = "<group>"; };
+		9F6CA4182930EBA60024F6AF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		9F6CA41A2930F8760024F6AF /* MeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureView.swift; sourceTree = "<group>"; };
+		9FCDDECE293A6E6F009F2E1C /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +46,10 @@
 				9F2501DA292E618C00F20836 /* TreeHeightUI */,
 				9F2501D9292E618C00F20836 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 1;
 		};
 		9F2501D9292E618C00F20836 /* Products */ = {
 			isa = PBXGroup;
@@ -53,8 +64,11 @@
 			children = (
 				9F2501DB292E618C00F20836 /* TreeHeightUIApp.swift */,
 				9F2501DD292E618C00F20836 /* ContentView.swift */,
+				9F6CA4182930EBA60024F6AF /* DetailView.swift */,
+				9F6CA41A2930F8760024F6AF /* MeasureView.swift */,
 				9F2501DF292E618D00F20836 /* Assets.xcassets */,
 				9F2501E1292E618D00F20836 /* Preview Content */,
+				9FCDDECE293A6E6F009F2E1C /* test.swift */,
 			);
 			path = TreeHeightUI;
 			sourceTree = "<group>";
@@ -63,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				9F2501E2292E618D00F20836 /* Preview Assets.xcassets */,
+				9F6CA4162930E2690024F6AF /* TreeIcon.png */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -127,6 +142,7 @@
 			files = (
 				9F2501E3292E618D00F20836 /* Preview Assets.xcassets in Resources */,
 				9F2501E0292E618D00F20836 /* Assets.xcassets in Resources */,
+				9F6CA4172930E2690024F6AF /* TreeIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F2501DE292E618C00F20836 /* ContentView.swift in Sources */,
+				9F6CA41B2930F8760024F6AF /* MeasureView.swift in Sources */,
+				9F6CA4192930EBA60024F6AF /* DetailView.swift in Sources */,
+				9FCDDECF293A6E6F009F2E1C /* test.swift in Sources */,
 				9F2501DC292E618C00F20836 /* TreeHeightUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,9 +284,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TreeHeightUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 8K3HXH5R8W;
+				DEVELOPMENT_TEAM = C55N6W46JS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -280,7 +299,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Vogtjanm.TreeHeightUI;
+				PRODUCT_BUNDLE_IDENTIFIER = de.vogtjanm.TreeHeightUi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -294,9 +313,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"TreeHeightUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 8K3HXH5R8W;
+				DEVELOPMENT_TEAM = C55N6W46JS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -309,7 +328,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Vogtjanm.TreeHeightUI;
+				PRODUCT_BUNDLE_IDENTIFIER = de.vogtjanm.TreeHeightUi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

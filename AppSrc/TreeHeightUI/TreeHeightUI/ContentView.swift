@@ -10,29 +10,28 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            
             VStack{
-                TimelineView(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=TimelineSchedule@*/EveryMinuteTimelineSchedule()/*@END_MENU_TOKEN@*/) { context in
-                    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Content")/*@END_MENU_TOKEN@*/
+                NavigationLink(destination: DetailView()) {
+                    Text("PressMe")
                 }
-                    .foregroundColor(Color.green)
-                Image(systemName: "plus")
-                Text("bra")
-                Text("test")
-                Text("Test")
-                    .multilineTextAlignment(.trailing)
-                Text("bra")
-                    .multilineTextAlignment(.leading)
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) {
-                            Button("action1", action: {})
-                                .padding(.bottom, 200.0)
-                                .background(Color.green)
-                        }
-                        
+                Spacer()
+                    .frame(height: 50.0)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(){
+                        Image("TreeIcon")
+                        Image("TreeIcon")
+                        Image("TreeIcon")
+                        Image("TreeIcon")
+                        Image("TreeIcon")
                     }
+                }
+                Spacer()
+                    .frame(height: 100.0)
+								NavigationLink(destination: MeasureView()) {
+								Image(systemName: "plus")
+							}
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
