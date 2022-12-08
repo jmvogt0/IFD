@@ -91,8 +91,14 @@ struct RealityKitView: UIViewRepresentable {
 }
 
 struct ContentView: View {
-    @State var testvar :Float = cubeDistance
-    @State var count:Int = 1
+    @State var testVar :Float = cubeDistance
+    @State var gyroRunning :Bool = false
+    var gyro = Gyro.Gyros()
+    var height = triangleCalc()
+    @State var treeHeight :Double = 0
+    
+    // irgendwie das hier mit der Variable beheben
+    @State var deviceRotation :Double = 0
     
     var body: some View {
         RealityKitView()
@@ -100,19 +106,36 @@ struct ContentView: View {
         
         //print(someResolution.width)
         
-        
         VStack {
             HStack{
                 Image(systemName: "globe")
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
-                Text("\(testvar)")
+                Text("\(testVar)")
+                Text("\(deviceRotation * 180 / Double.pi)")
                 Button(action: {
-                    self.testvar = cubeDistance
+                    self.testVar = cubeDistance
+                    deviceRotation = gyro.rotation
+                    if !gyroRunning {
+                        gyro.startGyros()
+                        gyroRunning = true
+                    } else {
+                        gyro.stopGyros()
+                        gyroRunning = false
+                    }
+                    
                 }) {
                     Image(systemName: "plus")
                 }
                        
+            }
+            HStack{
+                Button(action: {
+                    treeHeight = height.calcHeight(distance: Double(testVar), angle: deviceRotation)
+                }){
+                    Image(systemName: "plus")
+                }
+                Text("Ergebnis:\(treeHeight)")
             }
             
         }
