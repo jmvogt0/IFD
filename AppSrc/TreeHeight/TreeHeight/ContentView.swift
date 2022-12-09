@@ -9,10 +9,12 @@ import ARKit
 import RealityKit
 import SwiftUI
 import FocusEntity
+import CoreMotion
 
 var cubePositions :[SIMD3<Float>] = []
 var cubeDistance :Float = 0
 
+// AR View
 struct RealityKitView: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
        let view = ARView()
@@ -94,8 +96,11 @@ struct ContentView: View {
     @State var testVar :Float = cubeDistance
     @State var gyroRunning :Bool = false
     var gyro = Gyro.Gyros()
-    var height = triangleCalc()
+    //Dreieck für die Berechnung der Höhe
+    var triangle = Calc.Triangle()
     @State var treeHeight :Double = 0
+    
+    @State var btnCount :Int = 0
     
     // irgendwie das hier mit der Variable beheben
     @State var deviceRotation :Double = 0
@@ -105,41 +110,48 @@ struct ContentView: View {
             .ignoresSafeArea()
         
         //print(someResolution.width)
-        
-        VStack {
-            HStack{
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("\(testVar)")
-                Text("\(deviceRotation * 180 / Double.pi)")
-                Button(action: {
-                    self.testVar = cubeDistance
-                    deviceRotation = gyro.rotation
-                    if !gyroRunning {
-                        gyro.startGyros()
-                        gyroRunning = true
-                    } else {
-                        gyro.stopGyros()
-                        gyroRunning = false
+            VStack {
+                HStack{
+                    Image(systemName: "globe")
+                        .imageScale(.large)
+                        .foregroundColor(.accentColor)
+                    Text("\(testVar)")
+                    Text("\(deviceRotation * 180 / Double.pi)")
+                    Button(action: {
+                        self.testVar = cubeDistance
+                        deviceRotation = gyro.rotation
+                        if !gyroRunning {
+                            gyro.startGyros()
+                            gyroRunning = true
+                        } else {
+                            gyro.stopGyros()
+                            gyroRunning = false
+                        }
+                        
+                    }) {
+                        Image(systemName: "plus")
                     }
                     
-                }) {
-                    Image(systemName: "plus")
                 }
-                       
-            }
-            HStack{
-                Button(action: {
-                    treeHeight = height.calcHeight(distance: Double(testVar), angle: deviceRotation)
-                }){
-                    Image(systemName: "plus")
+                HStack{
+                    Button(action: {
+                        switch btnCount {
+                        case 0: print("0")
+                        case 1: print("1")
+                        case 2: print("2")
+                        case 3: print("1")
+                        default: print("Error")
+                        }
+                        self.btnCount += 1
+                        treeHeight = triangle.calcHeight(distance: Double(testVar), angle: deviceRotation)
+                    }){
+                        Image(systemName: "plus")
+                    }
+                    Text("Ergebnis:\(treeHeight)")
                 }
-                Text("Ergebnis:\(treeHeight)")
+                
             }
-            
-        }
-        .padding()
+            .padding()
     }
 }
 
