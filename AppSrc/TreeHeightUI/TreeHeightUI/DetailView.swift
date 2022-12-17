@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct DetailView: View {
+    @EnvironmentObject var cubeSettings: CubeSettings
     var body: some View {
         NavigationView {
             VStack{
                 Spacer()
                     .frame(height: 50.0)
                     HStack(){
-                        Image("TreeIcon")
+                        VStack(){
+                            Image("TreeIcon")
+                            Text("Height: \(cubeSettings.height)")
+                        }
                     }
                 Spacer()
                     .frame(height: 100.0)
-							NavigationLink(destination: ContentView()) {
+                NavigationLink(destination: MainPage()) {
 								Image(systemName: "plus")
 							}.buttonStyle(PlainButtonStyle())
                 
 
             }
         }
+        .environmentObject(cubeSettings)
         .navigationBarBackButtonHidden(true)
     }
 }

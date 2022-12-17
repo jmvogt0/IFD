@@ -11,7 +11,7 @@ import SwiftUI
 struct TreeHeightApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainPage()
         }
     }
 }
