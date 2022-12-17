@@ -95,6 +95,10 @@ struct RealityKitView: UIViewRepresentable {
 }
 
 struct ContentView: View {
+    init(){
+        UINavigationBar.setAnimationsEnabled(false)
+    }
+    
     @StateObject var cubeSettings = CubeSettings()
     
     @State var finished :Bool = false

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
@@ -22,19 +23,18 @@ struct DetailView: View {
                     }
                 Spacer()
                     .frame(height: 100.0)
-                NavigationLink(destination: MainPage()) {
-								Image(systemName: "plus")
-							}.buttonStyle(PlainButtonStyle())
-                
-
+                Button(
+                    action: { self.presentationMode.wrappedValue.dismiss()
+                }){
+                    Image(systemName: "arrow.forward")
+                        //.imageScale(.large)
+                        .resizable()
+                        .frame(width: 32.0, height: 32.0)
+                        .foregroundColor(Color(UIColor.init(named: "ButtonSymbolColor") ?? .black))
+                }
+                .buttonStyle(.bordered)
             }
         }
         .navigationBarBackButtonHidden(true)
-    }
-}
-
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
     }
 }

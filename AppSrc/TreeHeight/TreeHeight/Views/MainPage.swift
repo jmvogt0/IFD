@@ -11,7 +11,7 @@ struct MainPage: View {
     var body: some View {
         NavigationView {
             VStack{
-                NavigationLink(destination: DetailView()) {
+                NavigationLink(destination: LastTreeHeightView()) {
                     Text("Last Tree")
                 }
                 Spacer()

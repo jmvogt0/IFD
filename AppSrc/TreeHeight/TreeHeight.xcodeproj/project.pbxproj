@@ -15,6 +15,8 @@
 		9F4ACF0B2926F8870086D09C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F4ACF0A2926F8870086D09C /* Assets.xcassets */; };
 		9F4ACF0E2926F8870086D09C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F4ACF0D2926F8870086D09C /* Preview Assets.xcassets */; };
 		9F4ACF1629277AB00086D09C /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4ACF1529277AB00086D09C /* FocusEntity */; };
+		9FBFC90A294E8641003EAF35 /* LastTreeHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBFC909294E8641003EAF35 /* LastTreeHeightView.swift */; };
+		9FBFC90C294E8877003EAF35 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FBFC90B294E8877003EAF35 /* Launch Screen.storyboard */; };
 		9FC7717A29436ECD008E316C /* Calc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7717929436ECD008E316C /* Calc.swift */; };
 		9FC7717D29437329008E316C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7717C29437329008E316C /* DetailView.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,8 @@
 		9F4ACF082926F8860086D09C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F4ACF0A2926F8870086D09C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F4ACF0D2926F8870086D09C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9FBFC909294E8641003EAF35 /* LastTreeHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTreeHeightView.swift; sourceTree = "<group>"; };
+		9FBFC90B294E8877003EAF35 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9FC7717929436ECD008E316C /* Calc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calc.swift; sourceTree = "<group>"; };
 		9FC7717C29437329008E316C /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailView.swift; path = ../../../TreeHeightUI/TreeHeightUI/DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +74,7 @@
 				9F38BCDE293E3A5F006E61B2 /* deviceRotation.swift */,
 				9FC7717929436ECD008E316C /* Calc.swift */,
 				9F4465D5294CFC7700CE2A4E /* EnvironmentObjects.swift */,
+				9FBFC90B294E8877003EAF35 /* Launch Screen.storyboard */,
 			);
 			path = TreeHeight;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 				9F4ACF082926F8860086D09C /* ContentView.swift */,
 				9F4465D3294BBF4A00CE2A4E /* MainPage.swift */,
 				9FC7717C29437329008E316C /* DetailView.swift */,
+				9FBFC909294E8641003EAF35 /* LastTreeHeightView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FBFC90C294E8877003EAF35 /* Launch Screen.storyboard in Resources */,
 				9F4ACF0E2926F8870086D09C /* Preview Assets.xcassets in Resources */,
 				9F4ACF0B2926F8870086D09C /* Assets.xcassets in Resources */,
 			);
@@ -171,6 +178,7 @@
 				9F4ACF092926F8860086D09C /* ContentView.swift in Sources */,
 				9F38BCDF293E3A5F006E61B2 /* deviceRotation.swift in Sources */,
 				9FC7717A29436ECD008E316C /* Calc.swift in Sources */,
+				9FBFC90A294E8641003EAF35 /* LastTreeHeightView.swift in Sources */,
 				9FC7717D29437329008E316C /* DetailView.swift in Sources */,
 				9F4ACF072926F8860086D09C /* TreeHeightApp.swift in Sources */,
 				9F4465D6294CFC7700CE2A4E /* EnvironmentObjects.swift in Sources */,
@@ -311,6 +319,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -346,6 +355,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
