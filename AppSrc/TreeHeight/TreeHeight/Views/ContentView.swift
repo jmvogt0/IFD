@@ -79,8 +79,8 @@ struct RealityKitView: UIViewRepresentable {
             view.scene.anchors.append(anchor)
             
             // Add a Box entity with a blue material
-            let box = MeshResource.generateBox(size: 0.03, cornerRadius: 0.01)
-            let material = SimpleMaterial(color: .yellow, isMetallic: true)
+            let box = MeshResource.generateBox(size: 0.02, cornerRadius: 0.01)
+            let material = SimpleMaterial(color: .red, isMetallic: true)
             let diceEntity = ModelEntity(mesh: box, materials: [material])
             diceEntity.position = devicePosition
             // Array schreiben um Positionen der Boxen zu speichern
@@ -139,6 +139,7 @@ struct MeasureView: View {
             .environmentObject(cubeSettings)
         //print(someResolution.width)
             VStack {
+                Text("Schritt \(btnCount + 1) / 2")
                 HStack{
                     Button(
                         action: {
@@ -165,7 +166,14 @@ struct MeasureView: View {
                         self.btnCount += 1
                     }){
                         Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 32.0, height: 32.0)
+                            .foregroundColor(Color(UIColor.init(named: "ButtonSymbolColor") ?? .black))
                     }
+                    //.background(Color.green)
+                    //.foregroundColor(.white)
+                    //.border(1)
+                    .buttonStyle(.bordered)
                 }
             }
             .padding()

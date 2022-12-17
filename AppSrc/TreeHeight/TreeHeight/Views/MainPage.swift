@@ -12,7 +12,7 @@ struct MainPage: View {
         NavigationView {
             VStack{
                 NavigationLink(destination: DetailView()) {
-                    Text("PressMe")
+                    Text("Last Tree")
                 }
                 Spacer()
                     .frame(height: 50.0)
@@ -29,7 +29,11 @@ struct MainPage: View {
                     .frame(height: 100.0)
 								NavigationLink(destination: ContentView()) {
 								Image(systemName: "plus")
+                                        .resizable()
+                                        .frame(width: 32.0, height: 32.0)
+                                        .foregroundColor(Color(UIColor.init(named: "ButtonSymbolColor") ?? .black))
 							}
+                                .buttonStyle(.bordered)
             }
         }.navigationBarBackButtonHidden(true)
     }
