@@ -26,20 +26,15 @@ struct RealityKitView: UIViewRepresentable {
         // Start AR session
         let session = view.session
         let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal, .vertical]
         session.run(config)
         
         // Add coaching overlay
-       let coachingOverlay = ARCoachingOverlayView()
-       coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-       coachingOverlay.session = session
-       coachingOverlay.goal = .horizontalPlane
-       view.addSubview(coachingOverlay)
+        let coachingOverlay = ARCoachingOverlayView()
+        coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        coachingOverlay.session = session
+        coachingOverlay.goal = .horizontalPlane
+        view.addSubview(coachingOverlay)
         
-        // Set debug options
-       #if DEBUG
-       /* view.debugOptions = [.showFeaturePoints, .showAnchorOrigins, .showAnchorGeometry] */
-       #endif
         
         // Handle ARSession events via delegate
         context.coordinator.view = view
@@ -55,8 +50,6 @@ struct RealityKitView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, ARSessionDelegate {
-        //@EnvironmentObject var cubeSettings: CubeSettings
-        
         weak var view: ARView?
         var focusEntity: FocusEntity?
         
@@ -121,8 +114,6 @@ struct ContentView: View {
 struct MeasureView: View {
     @EnvironmentObject var cubeSettings: CubeSettings
     
-    
-    @State var testVar :Float = cubeDistance
     @State var gyroRunning :Bool = false
     var gyro = Gyro.Gyros()
     //Dreieck für die Berechnung der Höhe
@@ -167,11 +158,11 @@ struct MeasureView: View {
                                 self.finished = true
                                 cubeSettings.distance = Double(cubeDistance)
                                 cubeSettings.height = triangle.calcHeight(distance: cubeSettings.distance, angle: deviceRotation)
+                                UserDefaults.standard.set(cubeSettings.height, forKey:"LastTreeHeight")
                                 arView.view.session.pause()
                             default: print("Error")
                             }
                         self.btnCount += 1
-                        treeHeight = triangle.calcHeight(distance: Double(testVar), angle: deviceRotation)
                     }){
                         Image(systemName: "plus")
                     }

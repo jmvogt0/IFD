@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @EnvironmentObject var cubeSettings: CubeSettings
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -17,7 +17,7 @@ struct DetailView: View {
                     HStack(){
                         VStack(){
                             Image("TreeIcon")
-                            Text("Height: \(cubeSettings.height)")
+                            Text("Height: \(UserDefaults.standard.double(forKey: "LastTreeHeight")) m")
                         }
                     }
                 Spacer()
@@ -29,7 +29,6 @@ struct DetailView: View {
 
             }
         }
-        .environmentObject(cubeSettings)
         .navigationBarBackButtonHidden(true)
     }
 }
