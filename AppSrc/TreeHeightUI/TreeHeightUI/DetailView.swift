@@ -17,8 +17,23 @@ struct DetailView: View {
                     .frame(height: 50.0)
                     HStack(){
                         VStack(){
-                            Image("TreeIcon")
-                            Text("Height: \(UserDefaults.standard.double(forKey: "LastTreeHeight")) m")
+                            ZStack(){
+                                Color(UIColor.init(named: "TreeIconBackgroundColor") ?? .black)
+                                VStack(){
+                                    Text("\(String(format: "%.2f", UserDefaults.standard.double(forKey: "LastTreeHeight")))m")
+                                        .padding(10)
+                                    Image("ExperimentalTree")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(10)
+                                    Text("Fichte")
+                                        .font(.title)
+                                        .padding(10)
+                                }
+                            }
+                            .frame(height: 400.0)
+                            .cornerRadius(5)
+                            .padding(10)
                         }
                     }
                 Spacer()

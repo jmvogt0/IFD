@@ -35,7 +35,6 @@ struct RealityKitView: UIViewRepresentable {
         coachingOverlay.goal = .horizontalPlane
         view.addSubview(coachingOverlay)
         
-        
         // Handle ARSession events via delegate
         context.coordinator.view = view
         session.delegate = context.coordinator
@@ -99,9 +98,11 @@ struct ContentView: View {
         UINavigationBar.setAnimationsEnabled(false)
     }
     
-    @StateObject var cubeSettings = CubeSettings()
+    @EnvironmentObject var cubeSettings :CubeSettings
     
     @State var finished :Bool = false
+    
+    
     var body: some View {
             return Group {
                 if finished {
@@ -132,16 +133,36 @@ struct MeasureView: View {
     
     let coord = RealityKitView.Coordinator()
     
+    @State var anleitungText :String = "iPhone an Baumstamm halten"
+    
     
     // irgendwie das hier mit der Variable beheben
     @State var deviceRotation :Double = 0
     
-    
+    //Date things
+    let saveDate = Calc.SaveDate()
     var body: some View {
-        arView
-            .ignoresSafeArea()
-            .environmentObject(cubeSettings)
-        //print(someResolution.width)
+        ZStack{
+            arView
+                .ignoresSafeArea()
+                .environmentObject(cubeSettings)
+            VStack(){
+                ZStack(){
+                    Color(UIColor.init(named: "AnleitungBackgroundColor") ?? .black)
+                    Text(anleitungText)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                }
+                .frame(width: 150.0, height: 75.0)
+                    .padding([.bottom], 150)
+                    .cornerRadius(5)
+            }
+            Image(systemName: "ring.circle")
+                .resizable()
+                .frame(width: 32.0, height: 32.0)
+                .foregroundColor(Color(UIColor.init(named: "ButtonSymbolColor") ?? .black))
+                
+        }
             VStack {
                 Text("Schritt \(btnCount + 1) / 2")
                 HStack{
@@ -154,6 +175,7 @@ struct MeasureView: View {
                                 deviceRotation = gyro.rotation
                                 gyro.startGyros()
                                 gyroRunning = true
+                                anleitungText = "Vom Baum entfernen und Baumspitze markieren"
 
                             case 1:
                                 print("2")
@@ -164,6 +186,9 @@ struct MeasureView: View {
                                 cubeSettings.distance = Double(cubeDistance)
                                 cubeSettings.height = triangle.calcHeight(distance: cubeSettings.distance, angle: deviceRotation)
                                 UserDefaults.standard.set(cubeSettings.height, forKey:"LastTreeHeight")
+                                
+                                cubeSettings.date = saveDate.formatDate(date: Date.init())
+                                UserDefaults.standard.set(cubeSettings.date, forKey:"LastTreeHeightDate")
                                 arView.view.session.pause()
                             default: print("Error")
                             }
