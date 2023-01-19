@@ -34,10 +34,10 @@ struct Calc {
             if (height > 8 && height < 15){
                 age = "jünger als 60 Jahre"
             }
-            if (height > 8 && height < 25){
+            if (height > 15 && height < 25){
                 age = "jünger als 100 Jahre"
             }
-            if (height > 8 && height < 30){
+            if (height > 25 && height < 30){
                 age = "circa 140 Jahre"
             }
             if (height > 30){
