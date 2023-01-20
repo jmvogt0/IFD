@@ -16,6 +16,9 @@ HighFid:
 Testflight Testversion:
 https://testflight.apple.com/join/nGQdCG58 
 
+letzter Stand der AdobeXD Datei:
+https://xd.adobe.com/view/a8cfc068-6ff4-4d25-b7f9-181c86eaa558-fd9c/
+
 
 Anmerkungen:
 Das App-Icon sowie das Icon des Baumes in der App wurden von mir selbst erstellt.
